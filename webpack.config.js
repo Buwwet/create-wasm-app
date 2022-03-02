@@ -9,6 +9,17 @@ module.exports = {
   },
   mode: "development",
   plugins: [
-    new CopyWebpackPlugin(['index.html'])
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: path.resolve(__dirname, "index.html") },
+        { from: path.resolve(__dirname, "./resources"), to: "resources" },
+      ]
+    })
   ],
+  // CRITICAL
+  experiments: {
+    //asyncWebAssembly: true,
+    syncWebAssembly: true,
+  },
 };
+
